@@ -4,7 +4,7 @@
 - Role module: CRUD, add unique access module, remove access module, list with search & pagination.
 - User module: CRUD, signup, login (JWT), list with populated roleName & accessModules only.
 - Search functionality (partial, case-insensitive) on list APIs.
-- Bulk update: same update to many users, and different updates in one DB call.
+- Bulk update: same update to many users, and different updates in one DB callNodeJS Practical Task APIs.postman_collection.
 - Check if a user has access to a module.
 - Password hashing (bcrypt), JWT auth.
 - Basic error handling.

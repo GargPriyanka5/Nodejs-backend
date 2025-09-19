@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "9a14a2c3-a222-47ef-8d4c-110464f278c9",
+		"name": "NodeJS Practical Task APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17500109",
+		"_collection_link": "https://lunar-meadow-665255.postman.co/workspace/0386b2d5-b261-4452-8ad7-e43c53123118/collection/17500109-9a14a2c3-a222-47ef-8d4c-110464f278c9?action=share&source=collection_link&creator=17500109"
+	},
+	"item": [
+		{
+			"name": "Role APIs",
+			"item": [
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Owner\",\n  \"accessModules\": [\n    \"dashboard\",\n    \"reports\"\n  ],\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list Roles (with search)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/roles?search=admin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update access modules",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"accessModules\": [\"reports\" ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/roles/68cce8061c85a5a092b1a967",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"68cce8061c85a5a092b1a967"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get role (with Search)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/roles/68ccf30598ba2739036d0aa0?search=admin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"68ccf30598ba2739036d0aa0"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filter\": {\n    \"email\": \"priya@example.com\"\n  },\n  \"update\": {\n    \"firstName\": \"riya\",\n    \"active\": false\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/role/68ccf30598ba2739036d0aa0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"role",
+								"68ccf30598ba2739036d0aa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add unique access module",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"module\": \"Products\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/roles/68ccf30598ba2739036d0aa0/access/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"68ccf30598ba2739036d0aa0",
+								"access",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Access Module",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"module\": \"reports\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/roles/68ccf30598ba2739036d0aa0/access/remove",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"68ccf30598ba2739036d0aa0",
+								"access",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User APIs",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Priya\",\n  \"lastName\": \"Garg\",\n  \"email\": \"priya@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"68ccf30598ba2739036d0aa0\" \n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"priya@example.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users (with search & role populate)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users?search=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "john"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Access",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"accessModules\": \"dashboard\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/68ccfbf0124baaa5cc7e4777/check-access?module=dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"68ccfbf0124baaa5cc7e4777",
+								"check-access"
+							],
+							"query": [
+								{
+									"key": "module",
+									"value": "dashboard"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Update (Same Data)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filter\": {\n    \"email\": \"priya@example.com\"\n  },\n  \"update\": {\n    \"firstName\": \"riya\",\n    \"active\": false\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/bulk/update-same",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"bulk",
+								"update-same"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Update (Different Data)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operations\": [\n    {\n      \"_id\": \"68ccfb50124baaa5cc7e476e\",\n      \"update\": { \"firstName\": \"Priya\", \"lastName\": \"Sharma\" }\n    },\n    {\n      \"_id\": \"68ccfb50124baaa5cc7e476f\",\n      \"update\": { \"firstName\": \"Amit\", \"active\": false }\n    },\n    {\n      \"_id\": \"68ccfb50124baaa5cc7e4770\",\n      \"update\": { \"lastName\": \"Gupta\", \"active\": true }\n    }\n  ]\n}\n"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bulk/update-different",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"update-different"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get User with Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/68cce411c766d9577c6fa21e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"68cce411c766d9577c6fa21e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user with id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Priyanka\",\r\n    \"lastName\": \"Garg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/68cce411c766d9577c6fa21e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"68cce411c766d9577c6fa21e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user with id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Priyanka\",\r\n    \"lastName\": \"Garg\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/68ccfa4698ba2739036d0aab",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"68ccfa4698ba2739036d0aab"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{token}",
+			"value": ""
+		},
+		{
+			"key": "{base",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
